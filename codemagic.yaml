@@ -65,7 +65,6 @@ workflows:
               EXPORT_OPTIONS_PLIST="exportOptions.plist"
       artifacts:
         - build/ios/ipa/*.ipa
-        - build/ios/ipa/*helpfulness*.ipa
         - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
       publishing:
         app_store_connect:   # https://docs.codemagic.io/publishing-yaml/distribution              
