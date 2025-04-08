@@ -17,6 +17,8 @@ workflows:
           XCODE_SCHEME: "Unity-iPhone" # <-- Put the name of your scheme here.
           BUNDLE_ID: "com.gsahtjhofoefrsfwe.yotpcpsupkssilec" # <-- Put your Bundle Id here.
           APP_STORE_APPLE_ID: 6744328931 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
+          APP_GROUPS: "group.com.gsahtjhofoefrsfwe.yotpcpsupkssilec"
+          PUSH_NOTIFICATIONS: "true"
         xcode: latest # <-- set to specific version e.g. 14.3, 15.0 to avoid unexpected updates.
         cocoapods: default
       triggering:
@@ -37,7 +39,12 @@ workflows:
             keychain initialize
         - name: Fetch signing files
           script: |
-            app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --platform=IOS --create --certificate-key-password='040502' --entitlements '{"aps-environment": "production", "com.apple.security.application-groups": ["group.com.gsahtjhofoefrsfwe.yotpcpsupkssilec"]}'
+            app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --platform=IOS --create --certificate-key-password='040502'
+        - name: Set up entitlements
+          script: |
+            /usr/libexec/PlistBuddy -c "Add :aps-environment string production" Unity-iPhone.entitlements || true
+            /usr/libexec/PlistBuddy -c "Add :com.apple.security.application-groups array" Unity-iPhone.entitlements || true
+            /usr/libexec/PlistBuddy -c "Add :com.apple.security.application-groups: string $APP_GROUPS" Unity-iPhone.entitlements || true
         - name: Use system default keychain
           script: |
             keychain add-certificates
