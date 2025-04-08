@@ -17,7 +17,6 @@ workflows:
           XCODE_SCHEME: "Unity-iPhone" # <-- Put the name of your scheme here.
           BUNDLE_ID: "com.gsahtjhofoefrsfwe.yotpcpsupkssilec" # <-- Put your Bundle Id here.
           APP_STORE_APPLE_ID: 6744328931 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
-          IOS_DEPLOYMENT_TARGET: "12.0"
         xcode: latest # <-- set to specific version e.g. 14.3, 15.0 to avoid unexpected updates.
         cocoapods: default
       triggering:
@@ -32,10 +31,7 @@ workflows:
       scripts:
         - name: Install pods
           script: |
-            # Устанавливаем зависимости, учитывая минимальную версию iOS
-            pod install --repo-update
-            # Устанавливаем минимальную версию iOS для всех таргетов
-            sed -i '' 's/ios\/platform :ios, .*/platform :ios, '"$IOS_DEPLOYMENT_TARGET"'/g' Podfile
+            pod install
         - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
           script: |
             keychain initialize
