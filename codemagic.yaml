@@ -74,7 +74,6 @@ workflows:
             EOF
         - name: Build ipa for distribution
           script: |
-            export TREAT_MISSING_SCRIPT_PHASE_OUTPUTS_AS_ERRORS=NO
             xcode-project build-ipa --workspace "$XCODE_PROJECT" --scheme "$XCODE_SCHEME" --verbose
       artifacts:
         - build/ios/ipa/*.ipa
