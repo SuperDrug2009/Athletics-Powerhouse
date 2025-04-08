@@ -299,6 +299,9 @@ struct Predicate_1_t7F48518B008C1472339EEEBABA3DE203FE1F26ED;
 struct TaskCompletionSource_1_tB4EF81F69CCF7C4F0D956F9B26127C0634A24A37;
 struct TaskCompletionSource_1_tC9FC5C6EACD2138DA270912A14414A2FCA266372;
 struct TaskCompletionSource_1_t8A40BE53A167B6D71D5640881A7A894D8DA94970;
+struct TaskFactory_1_t6F188FE70F3006B0386002E392B799D85100732B;
+struct TaskFactory_1_t7ABCD7F9503486A075E0B072E6EB95956CFE3106;
+struct TaskFactory_1_tF4CDC5BDA20AE9BD3F65B6146CDCD3F753003E1D;
 struct Task_1_t0C4CD3A5BB93A184420D73218644C56C70FDA7E2;
 struct Task_1_t3D7638C82ED289AF156EDBAE76842D8DF4C4A9E0;
 struct Task_1_tE41CFF640EB7C045550D9D0D92BE67533B084C17;
@@ -1127,6 +1130,7 @@ struct HashAlgorithm_t299ECE61BBF4582B1F75734D43A96DDEC9B2004D  : public Runtime
 	bool ____disposed;
 	int32_t ___HashSizeValue;
 	ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031* ___HashValue;
+	int32_t ___State;
 };
 struct Json_tA43F75F18404F9D1D609CB97E1E04033CE9B3E1E  : public RuntimeObject
 {
@@ -2325,6 +2329,18 @@ struct UniWebViewInterface_tBF16762AE02FD523D8C403DB52C3E0EA1ADDAEF4_StaticField
 {
 	bool ___correctPlatform;
 };
+struct Task_1_t0C4CD3A5BB93A184420D73218644C56C70FDA7E2_StaticFields
+{
+	TaskFactory_1_t6F188FE70F3006B0386002E392B799D85100732B* ___s_defaultFactory;
+};
+struct Task_1_t3D7638C82ED289AF156EDBAE76842D8DF4C4A9E0_StaticFields
+{
+	TaskFactory_1_t7ABCD7F9503486A075E0B072E6EB95956CFE3106* ___s_defaultFactory;
+};
+struct Task_1_tDF1FF540D7D2248A08580387A39717B7FB7A9CF9_StaticFields
+{
+	TaskFactory_1_tF4CDC5BDA20AE9BD3F65B6146CDCD3F753003E1D* ___s_defaultFactory;
+};
 struct Boolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22_StaticFields
 {
 	String_t* ___TrueString;
@@ -2856,6 +2872,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebViewInterface_uv_authenticationCan
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebViewInterface_uv_authenticationSetPrivateMode_mCEFC76E9511741B86FD5741BE31027BEA4F3F7B1 (String_t* ___0_name, bool ___1_flag, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebViewInterface_uv_setShowEmbeddedToolbar_m5395D010125584E5A696CFA86B1B7789C417162E (String_t* ___0_name, bool ___1_show, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebViewInterface_uv_setEmbeddedToolbarOnTop_m4D32A31052FF2E399BFD78DD9E15E933CADD79BB (String_t* ___0_name, bool ___1_top, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebViewInterface_uv_setEmbeddedToolbarBackgroundColor_mF261C6AA73BBF1C317EB6DEB7AD2737288911583 (String_t* ___0_name, float ___1_r, float ___2_g, float ___3_b, float ___4_a, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebViewInterface_uv_startSnapshotForRendering_m0C8A061F6FB7A59F76974980794898BC3CF6F72D (String_t* ___0_name, String_t* ___1_identifier, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebViewInterface_uv_stopSnapshotForRendering_mE7FBC678C45C94B5D47085BE7987A779B80979E1 (String_t* ___0_name, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t UniWebViewInterface_uv_getRenderedData_m8ADFD4813A5E8D9839153054B08F21C4A27657C8 (String_t* ___0_name, int32_t ___1_x, int32_t ___2_y, int32_t ___3_width, int32_t ___4_height, int32_t* ___5_length, const RuntimeMethod* method) ;
@@ -3677,6 +3694,7 @@ inline RuntimeObject* Func_2_Invoke_mDBA25DA5DA5B7E056FB9B026AF041F1385FB58A9_in
 }
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebViewInterface_SetEmbeddedToolbarOnTop_m808CA022FBFC7A457625C5A65EC4B2E5ECEA65F3 (String_t* ___0_name, bool ___1_top, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebViewInterface_SetShowEmbeddedToolbar_m20341128EE85F11D43E62C88F42279378CDD7102 (String_t* ___0_name, bool ___1_show, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebViewInterface_SetEmbeddedToolbarBackgroundColor_mB61C800B020EA844DA61A9F17B6939B180088428 (String_t* ___0_name, Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___1_color, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebViewLogger__ctor_m34471A32804D2FA24C75F47FE2928C4D502592D8 (UniWebViewLogger_tCC52C6CFEB27096E20A64A468F0522A8946E0F9B* __this, int32_t ___0_level, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebViewLogger_Log_m659B6EC0A09C3588E2EE352A3991CD1AADE4921F (UniWebViewLogger_tCC52C6CFEB27096E20A64A468F0522A8946E0F9B* __this, int32_t ___0_targetLevel, String_t* ___1_message, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t UniWebViewLogger_get_LogLevel_mDD6D8292FDF564448574978C418BD4A1D042A761_inline (UniWebViewLogger_tCC52C6CFEB27096E20A64A468F0522A8946E0F9B* __this, const RuntimeMethod* method) ;
@@ -3884,6 +3902,7 @@ IL2CPP_EXTERN_C void DEFAULT_CALL uv_authenticationCancel(char*);
 IL2CPP_EXTERN_C void DEFAULT_CALL uv_authenticationSetPrivateMode(char*, int32_t);
 IL2CPP_EXTERN_C void DEFAULT_CALL uv_setShowEmbeddedToolbar(char*, int32_t);
 IL2CPP_EXTERN_C void DEFAULT_CALL uv_setEmbeddedToolbarOnTop(char*, int32_t);
+IL2CPP_EXTERN_C void DEFAULT_CALL uv_setEmbeddedToolbarBackgroundColor(char*, float, float, float, float);
 IL2CPP_EXTERN_C void DEFAULT_CALL uv_startSnapshotForRendering(char*, char*);
 IL2CPP_EXTERN_C void DEFAULT_CALL uv_stopSnapshotForRendering(char*);
 IL2CPP_EXTERN_C intptr_t DEFAULT_CALL uv_getRenderedData(char*, int32_t, int32_t, int32_t, int32_t, int32_t*);
@@ -7320,6 +7339,43 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebViewInterface_SetEmbeddedToolbarOn
 		String_t* L_0 = ___0_name;
 		bool L_1 = ___1_top;
 		UniWebViewInterface_uv_setEmbeddedToolbarOnTop_m4D32A31052FF2E399BFD78DD9E15E933CADD79BB(L_0, L_1, NULL);
+		return;
+	}
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebViewInterface_uv_setEmbeddedToolbarBackgroundColor_mF261C6AA73BBF1C317EB6DEB7AD2737288911583 (String_t* ___0_name, float ___1_r, float ___2_g, float ___3_b, float ___4_a, const RuntimeMethod* method) 
+{
+	typedef void (DEFAULT_CALL *PInvokeFunc) (char*, float, float, float, float);
+
+	char* ____0_name_marshaled = NULL;
+	____0_name_marshaled = il2cpp_codegen_marshal_string(___0_name);
+
+	reinterpret_cast<PInvokeFunc>(uv_setEmbeddedToolbarBackgroundColor)(____0_name_marshaled, ___1_r, ___2_g, ___3_b, ___4_a);
+
+	il2cpp_codegen_marshal_free(____0_name_marshaled);
+	____0_name_marshaled = NULL;
+
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebViewInterface_SetEmbeddedToolbarBackgroundColor_mB61C800B020EA844DA61A9F17B6939B180088428 (String_t* ___0_name, Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___1_color, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&UniWebViewInterface_tBF16762AE02FD523D8C403DB52C3E0EA1ADDAEF4_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		il2cpp_codegen_runtime_class_init_inline(UniWebViewInterface_tBF16762AE02FD523D8C403DB52C3E0EA1ADDAEF4_il2cpp_TypeInfo_var);
+		UniWebViewInterface_CheckPlatform_m6AF053C64524670C4A7F22FDA9344AB0CFB60B0C(NULL);
+		String_t* L_0 = ___0_name;
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_1 = ___1_color;
+		float L_2 = L_1.___r;
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_3 = ___1_color;
+		float L_4 = L_3.___g;
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_5 = ___1_color;
+		float L_6 = L_5.___b;
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_7 = ___1_color;
+		float L_8 = L_7.___a;
+		UniWebViewInterface_uv_setEmbeddedToolbarBackgroundColor_mF261C6AA73BBF1C317EB6DEB7AD2737288911583(L_0, L_2, L_4, L_6, L_8, NULL);
 		return;
 	}
 }
@@ -10877,6 +10933,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebView_SetAllowUniversalAccessFromFi
 		bool L_0 = ___0_flag;
 		il2cpp_codegen_runtime_class_init_inline(UniWebViewInterface_tBF16762AE02FD523D8C403DB52C3E0EA1ADDAEF4_il2cpp_TypeInfo_var);
 		UniWebViewInterface_SetAllowUniversalAccessFromFileURLs_mFA222A5C30FF032C8E1367F75EC605650D130156(L_0, NULL);
+		return;
+	}
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebView_SetEnableKeyboardAvoidance_mCB7A22BFB68D9AF4E0859CFBF78416E056B798F8 (bool ___0_flag, const RuntimeMethod* method) 
+{
+	{
 		return;
 	}
 }
@@ -23870,6 +23932,43 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebViewEmbeddedToolbar_Show_m47D20835
 		return;
 	}
 }
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebViewEmbeddedToolbar_Hide_mD87011E94EECFFC68950224C46F958041C249C5F (UniWebViewEmbeddedToolbar_t1602D5B2F6A9071F98A89BEE6BCC5AA6A4C2CEA0* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&UniWebViewInterface_tBF16762AE02FD523D8C403DB52C3E0EA1ADDAEF4_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		UniWebViewNativeListener_t01E5D3A50E9EFDDA6686FB3D429FC92A9ABD8423* L_0 = __this->___listener;
+		NullCheck(L_0);
+		String_t* L_1;
+		L_1 = UniWebViewNativeListener_get_Name_m118DE113ACADC4D0E8DD3230ADDE1F4146F1792C(L_0, NULL);
+		il2cpp_codegen_runtime_class_init_inline(UniWebViewInterface_tBF16762AE02FD523D8C403DB52C3E0EA1ADDAEF4_il2cpp_TypeInfo_var);
+		UniWebViewInterface_SetShowEmbeddedToolbar_m20341128EE85F11D43E62C88F42279378CDD7102(L_1, (bool)0, NULL);
+		return;
+	}
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebViewEmbeddedToolbar_SetBackgroundColor_mD728868B533EE1C75314D8F014F256E69F9586D1 (UniWebViewEmbeddedToolbar_t1602D5B2F6A9071F98A89BEE6BCC5AA6A4C2CEA0* __this, Color_tD001788D726C3A7F1379BEED0260B9591F440C1F ___0_color, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&UniWebViewInterface_tBF16762AE02FD523D8C403DB52C3E0EA1ADDAEF4_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		UniWebViewNativeListener_t01E5D3A50E9EFDDA6686FB3D429FC92A9ABD8423* L_0 = __this->___listener;
+		NullCheck(L_0);
+		String_t* L_1;
+		L_1 = UniWebViewNativeListener_get_Name_m118DE113ACADC4D0E8DD3230ADDE1F4146F1792C(L_0, NULL);
+		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_2 = ___0_color;
+		il2cpp_codegen_runtime_class_init_inline(UniWebViewInterface_tBF16762AE02FD523D8C403DB52C3E0EA1ADDAEF4_il2cpp_TypeInfo_var);
+		UniWebViewInterface_SetEmbeddedToolbarBackgroundColor_mB61C800B020EA844DA61A9F17B6939B180088428(L_1, L_2, NULL);
+		return;
+	}
+}
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif
@@ -25219,6 +25318,35 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebViewNativeListener__cctor_mF7BA2C9
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* UniWebViewNativeResultPayload_get_Extra_mD5510C90062E7ACA28E55303941A0A9C41850AF8 (UniWebViewNativeResultPayload_tCD1244DB06AF9BC62DA0360E3790110012E58B28* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		String_t* L_0 = __this->___extra;
+		bool L_1;
+		L_1 = String_IsNullOrEmpty_mEA9E3FB005AC28FE02E69FCF95A7B8456192B478(L_0, NULL);
+		if (!L_1)
+		{
+			goto IL_000f;
+		}
+	}
+	{
+		return (Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710*)NULL;
+	}
+
+IL_000f:
+	{
+		String_t* L_2 = __this->___extra;
+		RuntimeObject* L_3;
+		L_3 = Json_Deserialize_m9ADEF1CD374102A6CD4A0F4527137EFC135F7AE8(L_2, NULL);
+		return ((Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710*)IsInstClass((RuntimeObject*)L_3, Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710_il2cpp_TypeInfo_var));
+	}
+}
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UniWebViewNativeResultPayload__ctor_m376159F6A83E6F4D512C683F23FE3963CCE28A07 (UniWebViewNativeResultPayload_tCD1244DB06AF9BC62DA0360E3790110012E58B28* __this, const RuntimeMethod* method) 
 {
 	{
@@ -25991,7 +26119,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1A
 		StringReader_t1A336148FF22A9584E759A9D720CC96C23E35DD8* L_1 = __this->___json;
 		NullCheck(L_1);
 		int32_t L_2;
-		L_2 = VirtualFuncInvoker0< int32_t >::Invoke(9, L_1);
+		L_2 = VirtualFuncInvoker0< int32_t >::Invoke(10, L_1);
 	}
 
 IL_0012:
@@ -26067,7 +26195,7 @@ IL_0041:
 		StringReader_t1A336148FF22A9584E759A9D720CC96C23E35DD8* L_11 = __this->___json;
 		NullCheck(L_11);
 		int32_t L_12;
-		L_12 = VirtualFuncInvoker0< int32_t >::Invoke(9, L_11);
+		L_12 = VirtualFuncInvoker0< int32_t >::Invoke(10, L_11);
 		Dictionary_2_tA348003A3C1CEFB3096E9D2A0BC7F1AC8EC4F710* L_13 = V_0;
 		String_t* L_14 = V_1;
 		RuntimeObject* L_15;
@@ -26098,7 +26226,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR List_1_tA239CB83DE5615F348BB0507E45F490F4F7C9
 		StringReader_t1A336148FF22A9584E759A9D720CC96C23E35DD8* L_1 = __this->___json;
 		NullCheck(L_1);
 		int32_t L_2;
-		L_2 = VirtualFuncInvoker0< int32_t >::Invoke(9, L_1);
+		L_2 = VirtualFuncInvoker0< int32_t >::Invoke(10, L_1);
 		V_1 = (bool)1;
 		goto IL_003f;
 	}
@@ -26317,7 +26445,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Parser_ParseString_mC98A33B458B7972
 		StringReader_t1A336148FF22A9584E759A9D720CC96C23E35DD8* L_1 = __this->___json;
 		NullCheck(L_1);
 		int32_t L_2;
-		L_2 = VirtualFuncInvoker0< int32_t >::Invoke(9, L_1);
+		L_2 = VirtualFuncInvoker0< int32_t >::Invoke(10, L_1);
 		V_2 = (bool)1;
 		goto IL_0137;
 	}
@@ -26327,7 +26455,7 @@ IL_0019:
 		StringReader_t1A336148FF22A9584E759A9D720CC96C23E35DD8* L_3 = __this->___json;
 		NullCheck(L_3);
 		int32_t L_4;
-		L_4 = VirtualFuncInvoker0< int32_t >::Invoke(8, L_3);
+		L_4 = VirtualFuncInvoker0< int32_t >::Invoke(9, L_3);
 		if ((!(((uint32_t)L_4) == ((uint32_t)(-1)))))
 		{
 			goto IL_002e;
@@ -26371,7 +26499,7 @@ IL_004b:
 		StringReader_t1A336148FF22A9584E759A9D720CC96C23E35DD8* L_8 = __this->___json;
 		NullCheck(L_8);
 		int32_t L_9;
-		L_9 = VirtualFuncInvoker0< int32_t >::Invoke(8, L_8);
+		L_9 = VirtualFuncInvoker0< int32_t >::Invoke(9, L_8);
 		if ((!(((uint32_t)L_9) == ((uint32_t)(-1)))))
 		{
 			goto IL_0060;
@@ -26665,11 +26793,11 @@ IL_0002:
 		StringReader_t1A336148FF22A9584E759A9D720CC96C23E35DD8* L_0 = __this->___json;
 		NullCheck(L_0);
 		int32_t L_1;
-		L_1 = VirtualFuncInvoker0< int32_t >::Invoke(9, L_0);
+		L_1 = VirtualFuncInvoker0< int32_t >::Invoke(10, L_0);
 		StringReader_t1A336148FF22A9584E759A9D720CC96C23E35DD8* L_2 = __this->___json;
 		NullCheck(L_2);
 		int32_t L_3;
-		L_3 = VirtualFuncInvoker0< int32_t >::Invoke(8, L_2);
+		L_3 = VirtualFuncInvoker0< int32_t >::Invoke(9, L_2);
 		if ((((int32_t)L_3) == ((int32_t)(-1))))
 		{
 			goto IL_0029;
@@ -26706,7 +26834,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Il2CppChar Parser_get_PeekChar_m45AB92C6234D3
 		StringReader_t1A336148FF22A9584E759A9D720CC96C23E35DD8* L_0 = __this->___json;
 		NullCheck(L_0);
 		int32_t L_1;
-		L_1 = VirtualFuncInvoker0< int32_t >::Invoke(8, L_0);
+		L_1 = VirtualFuncInvoker0< int32_t >::Invoke(9, L_0);
 		il2cpp_codegen_runtime_class_init_inline(Convert_t7097FF336D592F7C06D88A98349A44646F91EFFC_il2cpp_TypeInfo_var);
 		Il2CppChar L_2;
 		L_2 = Convert_ToChar_mF1B1B205DDEFDE52251235514E7DAFCAB37D1F24(L_1, NULL);
@@ -26725,7 +26853,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Il2CppChar Parser_get_NextChar_mE8FE1A7B65CEC
 		StringReader_t1A336148FF22A9584E759A9D720CC96C23E35DD8* L_0 = __this->___json;
 		NullCheck(L_0);
 		int32_t L_1;
-		L_1 = VirtualFuncInvoker0< int32_t >::Invoke(9, L_0);
+		L_1 = VirtualFuncInvoker0< int32_t >::Invoke(10, L_0);
 		il2cpp_codegen_runtime_class_init_inline(Convert_t7097FF336D592F7C06D88A98349A44646F91EFFC_il2cpp_TypeInfo_var);
 		Il2CppChar L_2;
 		L_2 = Convert_ToChar_mF1B1B205DDEFDE52251235514E7DAFCAB37D1F24(L_1, NULL);
@@ -26759,7 +26887,7 @@ IL_0008:
 		StringReader_t1A336148FF22A9584E759A9D720CC96C23E35DD8* L_4 = __this->___json;
 		NullCheck(L_4);
 		int32_t L_5;
-		L_5 = VirtualFuncInvoker0< int32_t >::Invoke(8, L_4);
+		L_5 = VirtualFuncInvoker0< int32_t >::Invoke(9, L_4);
 		if ((((int32_t)L_5) == ((int32_t)(-1))))
 		{
 			goto IL_0030;
@@ -26804,7 +26932,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Parser_get_NextToken_m01B75660E1CF514
 		StringReader_t1A336148FF22A9584E759A9D720CC96C23E35DD8* L_0 = __this->___json;
 		NullCheck(L_0);
 		int32_t L_1;
-		L_1 = VirtualFuncInvoker0< int32_t >::Invoke(8, L_0);
+		L_1 = VirtualFuncInvoker0< int32_t >::Invoke(9, L_0);
 		if ((!(((uint32_t)L_1) == ((uint32_t)(-1)))))
 		{
 			goto IL_0016;
@@ -26978,7 +27106,7 @@ IL_00a9:
 		StringReader_t1A336148FF22A9584E759A9D720CC96C23E35DD8* L_9 = __this->___json;
 		NullCheck(L_9);
 		int32_t L_10;
-		L_10 = VirtualFuncInvoker0< int32_t >::Invoke(9, L_9);
+		L_10 = VirtualFuncInvoker0< int32_t >::Invoke(10, L_9);
 		return (int32_t)(2);
 	}
 
@@ -26992,7 +27120,7 @@ IL_00b9:
 		StringReader_t1A336148FF22A9584E759A9D720CC96C23E35DD8* L_11 = __this->___json;
 		NullCheck(L_11);
 		int32_t L_12;
-		L_12 = VirtualFuncInvoker0< int32_t >::Invoke(9, L_11);
+		L_12 = VirtualFuncInvoker0< int32_t >::Invoke(10, L_11);
 		return (int32_t)(4);
 	}
 
@@ -27001,7 +27129,7 @@ IL_00c7:
 		StringReader_t1A336148FF22A9584E759A9D720CC96C23E35DD8* L_13 = __this->___json;
 		NullCheck(L_13);
 		int32_t L_14;
-		L_14 = VirtualFuncInvoker0< int32_t >::Invoke(9, L_13);
+		L_14 = VirtualFuncInvoker0< int32_t >::Invoke(10, L_13);
 		return (int32_t)(6);
 	}
 

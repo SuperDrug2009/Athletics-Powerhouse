@@ -1,0 +1,31 @@
+{
+  "project_info": {
+    "project_number": "195021718525",
+    "project_id": "athletics-powerhouse",
+    "storage_bucket": "athletics-powerhouse.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195021718525:ios:ffcb862a82f2be4b518f94",
+        "android_client_info": {
+          "package_name": "com.gsahtjhofoefrsfwe.yotpcpsupkssilec"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVpFzXTc5GcIyDUCSM2qGXZtO5DorfEak"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 0
+        },
+        "appinvite_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

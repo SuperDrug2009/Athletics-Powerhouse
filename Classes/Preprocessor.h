@@ -181,7 +181,7 @@
 #define UNITY_USES_DYNAMIC_PLAYER_LIB 0
 #define UNITY_USES_LOCATION 0
 #define UNITY_USES_GLES 0
-#define UNITY_USES_IAD 0
+#define UNITY_USES_IAD 1
 
 //------------------------------------------------------------------------------
 //
