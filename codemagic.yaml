@@ -17,6 +17,7 @@ workflows:
           XCODE_SCHEME: "Unity-iPhone" # <-- Put the name of your scheme here.
           BUNDLE_ID: "com.gsahtjhofoefrsfwe.yotpcpsupkssilec" # <-- Put your Bundle Id here.
           APP_STORE_APPLE_ID: 6744328931 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
+          TREAT_MISSING_SCRIPT_PHASE_OUTPUTS_AS_ERRORS: "NO"
         xcode: latest # <-- set to specific version e.g. 14.3, 15.0 to avoid unexpected updates.
         cocoapods: default
       triggering:
@@ -73,8 +74,8 @@ workflows:
             EOF
         - name: Build ipa for distribution
           script: |
-            xcode-project build-ipa --workspace "$XCODE_PROJECT" --scheme "$XCODE_SCHEME" \
-              --build-settings 'TREAT_MISSING_SCRIPT_PHASE_OUTPUTS_AS_ERRORS=NO' --verbose
+            export TREAT_MISSING_SCRIPT_PHASE_OUTPUTS_AS_ERRORS=NO
+            xcode-project build-ipa --workspace "$XCODE_PROJECT" --scheme "$XCODE_SCHEME" --verbose
       artifacts:
         - build/ios/ipa/*.ipa
         - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
