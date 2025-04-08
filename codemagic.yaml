@@ -53,8 +53,8 @@ workflows:
             xcode-project use-profiles
         - name: Create entitlements directory and file
           script: |
-            mkdir -p Unity-iPhone
-            cat > Unity-iPhone/helpfulness.entitlements << EOL
+            mkdir -p "$HOME/clone/Unity-iPhone"
+            cat > "$HOME/clone/Unity-iPhone/helpfulness.entitlements" << EOL
             <?xml version="1.0" encoding="UTF-8"?>
             <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
             <plist version="1.0">
@@ -68,10 +68,11 @@ workflows:
             </dict>
             </plist>
             EOL
+            ls -la "$HOME/clone/Unity-iPhone/helpfulness.entitlements"
         - name: Configure capabilities
           script: |
             xcodebuild -project Unity-iPhone.xcodeproj -target helpfulness -showBuildSettings | grep PRODUCT_BUNDLE_IDENTIFIER
-            xcodebuild -project Unity-iPhone.xcodeproj -target helpfulness CODE_SIGN_ENTITLEMENTS="helpfulness.entitlements" CODE_SIGN_IDENTITY="Apple Distribution" PROVISIONING_PROFILE_SPECIFIER="match AppStore com.gsahtjhofoefrsfwe.yotpcpsupkssilec"
+            xcodebuild -project Unity-iPhone.xcodeproj -target helpfulness CODE_SIGN_ENTITLEMENTS="$HOME/clone/Unity-iPhone/helpfulness.entitlements" CODE_SIGN_IDENTITY="Apple Distribution" PROVISIONING_PROFILE_SPECIFIER="match AppStore com.gsahtjhofoefrsfwe.yotpcpsupkssilec"
         - name: Increment build number
           script: |
             # agvtool new-version -all $(($BUILD_NUMBER + 1))
