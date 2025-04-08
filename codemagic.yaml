@@ -37,7 +37,11 @@ workflows:
             keychain initialize
         - name: Fetch signing files
           script: |
-            app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --platform=IOS --create --certificate-key-password='040502' --entitlements '{"aps-environment": "production", "com.apple.security.application-groups": ["group.com.gsahtjhofoefrsfwe.yotpcpsupkssilec"]}'
+            # Создаем профиль для основного приложения
+            app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --platform=IOS --create --certificate-key-password='040502'
+            
+            # Создаем профиль для таргета уведомлений
+            app-store-connect fetch-signing-files "helpfulness" --type IOS_APP_STORE --platform=IOS --create --certificate-key-password='040502'
         - name: Use system default keychain
           script: |
             keychain add-certificates
