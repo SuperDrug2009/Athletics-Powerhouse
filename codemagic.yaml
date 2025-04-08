@@ -17,7 +17,6 @@ workflows:
           XCODE_SCHEME: "Unity-iPhone" # <-- Put the name of your scheme here.
           BUNDLE_ID: "com.gsahtjhofoefrsfwe.yotpcpsupkssilec" # <-- Put your Bundle Id here.
           APP_STORE_APPLE_ID: 6744328931 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
-          TREAT_MISSING_SCRIPT_PHASE_OUTPUTS_AS_ERRORS: "NO"
         xcode: latest # <-- set to specific version e.g. 14.3, 15.0 to avoid unexpected updates.
         cocoapods: default
       triggering:
@@ -38,11 +37,7 @@ workflows:
             keychain initialize
         - name: Fetch signing files
           script: |
-            # Создаем профиль для основного приложения
             app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --platform=IOS --create --certificate-key-password='040502'
-            
-            # Создаем профиль для таргета уведомлений
-            app-store-connect fetch-signing-files "com.gsahtjhofoefrsfwe.yotpcpsupkssilec.helpfulness" --type IOS_APP_STORE --platform=IOS --create --certificate-key-password='040502'
         - name: Use system default keychain
           script: |
             keychain add-certificates
@@ -53,28 +48,9 @@ workflows:
           script: |
             # agvtool new-version -all $(($BUILD_NUMBER + 1))
             agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID") + 1))
-        - name: Create export options plist
-          script: |
-            cat << EOF > exportOptions.plist
-            <?xml version="1.0" encoding="UTF-8"?>
-            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-            <plist version="1.0">
-            <dict>
-                <key>method</key>
-                <string>app-store</string>
-                <key>provisioningProfiles</key>
-                <dict>
-                    <key>$BUNDLE_ID</key>
-                    <string>match AppStore $BUNDLE_ID</string>
-                    <key>com.gsahtjhofoefrsfwe.yotpcpsupkssilec.helpfulness</key>
-                    <string>match AppStore com.gsahtjhofoefrsfwe.yotpcpsupkssilec.helpfulness</string>
-                </dict>
-            </dict>
-            </plist>
-            EOF
         - name: Build ipa for distribution
           script: |
-            xcode-project build-ipa --workspace "$XCODE_PROJECT" --scheme "$XCODE_SCHEME" --verbose
+            xcode-project build-ipa --workspace "$XCODE_PROJECT" --scheme "$XCODE_SCHEME"
       artifacts:
         - build/ios/ipa/*.ipa
         - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM

@@ -1606,8 +1606,6 @@
 			);
 			name = "Run Script";
 			outputPaths = (
-				"$(CONFIGURATION_BUILD_DIR)/libGameAssembly.a",
-				"$(CONFIGURATION_TEMP_DIR)/artifacts/$(ARCHS)/*",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
