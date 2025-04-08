@@ -51,6 +51,9 @@ workflows:
         - name: Set up code signing settings on Xcode project
           script: |
             xcode-project use-profiles
+        - name: Configure capabilities
+          script: |
+            xcode-project configure-capabilities --project Unity-iPhone.xcodeproj --target helpfulness --capabilities "App Groups" "Push Notifications"
         - name: Increment build number
           script: |
             # agvtool new-version -all $(($BUILD_NUMBER + 1))
