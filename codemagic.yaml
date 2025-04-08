@@ -48,7 +48,6 @@ workflows:
         - name: Set up code signing settings on Xcode project
           script: |
             xcode-project use-profiles
-            xcode-project set-signing-settings --target "helpfulness" --bundle-id "com.gsahtjhofoefrsfwe.yotpcpsupkssilec.helpfulness" --team-id "433ZDW46MR" --profile-name "match AppStore com.gsahtjhofoefrsfwe.yotpcpsupkssilec.helpfulness"
         - name: Increment build number
           script: |
             # agvtool new-version -all $(($BUILD_NUMBER + 1))
@@ -74,7 +73,7 @@ workflows:
             EOF
         - name: Build ipa for distribution
           script: |
-            xcode-project build-ipa --workspace "$XCODE_PROJECT" --scheme "$XCODE_SCHEME" --export-options-plist exportOptions.plist --verbose
+            xcode-project build-ipa --workspace "$XCODE_PROJECT" --scheme "$XCODE_SCHEME" --verbose
       artifacts:
         - build/ios/ipa/*.ipa
         - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
