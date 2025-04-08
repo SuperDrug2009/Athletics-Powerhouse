@@ -54,7 +54,8 @@ workflows:
             agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID") + 1))
         - name: Build ipa for distribution
           script: |
-            xcode-project build-ipa --workspace "$XCODE_PROJECT" --scheme "$XCODE_SCHEME"
+            xcode-project build-ipa --workspace "$XCODE_PROJECT" --scheme "$XCODE_SCHEME" \
+              --export-options-plist '{"method": "app-store", "provisioningProfiles": {"$BUNDLE_ID": "match AppStore $BUNDLE_ID", "helpfulness": "match AppStore helpfulness"}}'
       artifacts:
         - build/ios/ipa/*.ipa
         - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
