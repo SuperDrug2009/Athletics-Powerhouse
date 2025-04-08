@@ -73,7 +73,8 @@ workflows:
             EOF
         - name: Build ipa for distribution
           script: |
-            xcode-project build-ipa --workspace "$XCODE_PROJECT" --scheme "$XCODE_SCHEME" --verbose
+            xcode-project build-ipa --workspace "$XCODE_PROJECT" --scheme "$XCODE_SCHEME" \
+              --build-settings 'TREAT_MISSING_SCRIPT_PHASE_OUTPUTS_AS_ERRORS=NO' --verbose
       artifacts:
         - build/ios/ipa/*.ipa
         - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
