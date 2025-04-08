@@ -1,6 +1,6 @@
 source 'https://cdn.cocoapods.org/'
  
-platform :ios, '11.0'
+platform :ios, '12.0'
  
 target 'UnityFramework' do
   pod 'AppsFlyerFramework', '6.13.0'
