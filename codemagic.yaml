@@ -44,6 +44,11 @@ workflows:
         - name: Set up code signing settings on Xcode project
           script: |
             xcode-project use-profiles
+            xcode-project update-project-properties --project Unity-iPhone.xcodeproj --target Unity-iPhone --code-signing-identity "Apple Distribution" --development-team "$APP_STORE_CONNECT_KEY_IDENTIFIER"
+            xcode-project update-project-properties --project Unity-iPhone.xcodeproj --target UnityFramework --code-signing-identity "Apple Distribution" --development-team "$APP_STORE_CONNECT_KEY_IDENTIFIER"
+            xcode-project update-project-properties --project Unity-iPhone.xcodeproj --target GameAssembly --code-signing-identity "Apple Distribution" --development-team "$APP_STORE_CONNECT_KEY_IDENTIFIER"
+            xcode-project update-project-properties --project Unity-iPhone.xcodeproj --target helpfulness --code-signing-identity "Apple Distribution" --development-team "$APP_STORE_CONNECT_KEY_IDENTIFIER"
+            plutil -replace entitlements -json '{"com.apple.security.application-groups":[],"aps-environment":"production"}' Unity-iPhone/helpfulness.entitlements
         - name: Increment build number
           script: |
             # agvtool new-version -all $(($BUILD_NUMBER + 1))
