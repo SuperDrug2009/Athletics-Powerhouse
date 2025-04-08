@@ -19,6 +19,8 @@ workflows:
           APP_STORE_APPLE_ID: 6744328931 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
           APP_GROUPS: "group.com.gsahtjhofoefrsfwe.yotpcpsupkssilec"
           PUSH_NOTIFICATIONS: "true"
+          CODE_SIGN_IDENTITY: "Apple Distribution"
+          PROVISIONING_PROFILE_SPECIFIER: "match AppStore com.gsahtjhofoefrsfwe.yotpcpsupkssilec"
         xcode: latest # <-- set to specific version e.g. 14.3, 15.0 to avoid unexpected updates.
         cocoapods: default
       triggering:
@@ -51,7 +53,7 @@ workflows:
         - name: Set up code signing settings on Xcode project
           script: |
             xcode-project use-profiles
-        - name: Create entitlements directory and file
+        - name: Create entitlements file
           script: |
             mkdir -p "$HOME/clone/Unity-iPhone"
             cat > "$HOME/clone/Unity-iPhone/helpfulness.entitlements" << EOL
@@ -69,10 +71,6 @@ workflows:
             </plist>
             EOL
             ls -la "$HOME/clone/Unity-iPhone/helpfulness.entitlements"
-        - name: Configure capabilities
-          script: |
-            xcodebuild -project Unity-iPhone.xcodeproj -target helpfulness -showBuildSettings | grep PRODUCT_BUNDLE_IDENTIFIER
-            xcodebuild -project Unity-iPhone.xcodeproj -target helpfulness CODE_SIGN_ENTITLEMENTS="$HOME/clone/Unity-iPhone/helpfulness.entitlements" CODE_SIGN_IDENTITY="Apple Distribution" PROVISIONING_PROFILE_SPECIFIER="match AppStore com.gsahtjhofoefrsfwe.yotpcpsupkssilec"
         - name: Increment build number
           script: |
             # agvtool new-version -all $(($BUILD_NUMBER + 1))
