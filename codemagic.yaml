@@ -53,7 +53,24 @@ workflows:
             xcode-project use-profiles
         - name: Configure capabilities
           script: |
-            xcode-project configure-capabilities --project Unity-iPhone.xcodeproj --target helpfulness --capabilities "App Groups" "Push Notifications"
+            xcodebuild -project Unity-iPhone.xcodeproj -target helpfulness -showBuildSettings | grep PRODUCT_BUNDLE_IDENTIFIER
+            xcodebuild -project Unity-iPhone.xcodeproj -target helpfulness CODE_SIGN_ENTITLEMENTS="Unity-iPhone/helpfulness.entitlements" CODE_SIGN_IDENTITY="Apple Distribution" PROVISIONING_PROFILE_SPECIFIER="match AppStore com.gsahtjhofoefrsfwe.yotpcpsupkssilec"
+        - name: Create entitlements file
+          script: |
+            cat > Unity-iPhone/helpfulness.entitlements << EOL
+            <?xml version="1.0" encoding="UTF-8"?>
+            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+            <plist version="1.0">
+            <dict>
+                <key>aps-environment</key>
+                <string>production</string>
+                <key>com.apple.security.application-groups</key>
+                <array>
+                    <string>group.com.gsahtjhofoefrsfwe.yotpcpsupkssilec</string>
+                </array>
+            </dict>
+            </plist>
+            EOL
         - name: Increment build number
           script: |
             # agvtool new-version -all $(($BUILD_NUMBER + 1))
