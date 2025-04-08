@@ -41,7 +41,7 @@ workflows:
             app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --platform=IOS --create --certificate-key-password='040502'
             
             # Создаем профиль для таргета уведомлений
-            app-store-connect fetch-signing-files "helpfulness" --type IOS_APP_STORE --platform=IOS --create --certificate-key-password='040502'
+            app-store-connect fetch-signing-files "com.gsahtjhofoefrsfwe.yotpcpsupkssilec.helpfulness" --type IOS_APP_STORE --platform=IOS --create --certificate-key-password='040502'
         - name: Use system default keychain
           script: |
             keychain add-certificates
@@ -52,10 +52,29 @@ workflows:
           script: |
             # agvtool new-version -all $(($BUILD_NUMBER + 1))
             agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID") + 1))
+        - name: Create export options plist
+          script: |
+            cat << EOF > exportOptions.plist
+            <?xml version="1.0" encoding="UTF-8"?>
+            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+            <plist version="1.0">
+            <dict>
+                <key>method</key>
+                <string>app-store</string>
+                <key>provisioningProfiles</key>
+                <dict>
+                    <key>$BUNDLE_ID</key>
+                    <string>match AppStore $BUNDLE_ID</string>
+                    <key>com.gsahtjhofoefrsfwe.yotpcpsupkssilec.helpfulness</key>
+                    <string>match AppStore com.gsahtjhofoefrsfwe.yotpcpsupkssilec.helpfulness</string>
+                </dict>
+            </dict>
+            </plist>
+            EOF
         - name: Build ipa for distribution
           script: |
             xcode-project build-ipa --workspace "$XCODE_PROJECT" --scheme "$XCODE_SCHEME" \
-              --export-options-plist '{"method": "app-store", "provisioningProfiles": {"$BUNDLE_ID": "match AppStore $BUNDLE_ID", "helpfulness": "match AppStore helpfulness"}}'
+              --export-options '{"method": "app-store", "provisioningProfiles": {"com.gsahtjhofoefrsfwe.yotpcpsupkssilec": "match AppStore com.gsahtjhofoefrsfwe.yotpcpsupkssilec", "com.gsahtjhofoefrsfwe.yotpcpsupkssilec.helpfulness": "match AppStore com.gsahtjhofoefrsfwe.yotpcpsupkssilec.helpfulness"}}'
       artifacts:
         - build/ios/ipa/*.ipa
         - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
