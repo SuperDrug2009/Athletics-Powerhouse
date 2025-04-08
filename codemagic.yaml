@@ -37,8 +37,7 @@ workflows:
             keychain initialize
         - name: Fetch signing files
           script: |
-            app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --platform=IOS --create --certificate-key-password='040502'
-            app-store-connect fetch-signing-files "com.gsahtjhofoefrsfwe.yotpcpsupkssilec.helpfulness" --type IOS_APP_STORE --platform=IOS --create --certificate-key-password='040502'
+            app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --platform=IOS --create --certificate-key-password='040502' --entitlements '{"aps-environment": "production", "com.apple.security.application-groups": ["group.com.gsahtjhofoefrsfwe.yotpcpsupkssilec"]}'
         - name: Use system default keychain
           script: |
             keychain add-certificates
@@ -51,18 +50,7 @@ workflows:
             agvtool new-version -all $(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID") + 1))
         - name: Build ipa for distribution
           script: |
-            xcode-project build-ipa \
-              --workspace "$XCODE_PROJECT" \
-              --scheme "$XCODE_SCHEME" \
-              --configuration Release \
-              --clean \
-              --quiet \
-              CODE_SIGN_IDENTITY="Apple Distribution" \
-              CODE_SIGN_STYLE="Manual" \
-              DEVELOPMENT_TEAM="433ZDW46MR" \
-              COMPILER_INDEX_STORE_ENABLE=NO \
-              OTHER_CODE_SIGN_FLAGS="--keychain $HOME/Library/Keychains/login.keychain-db" \
-              EXPORT_OPTIONS_PLIST="exportOptions.plist"
+            xcode-project build-ipa --workspace "$XCODE_PROJECT" --scheme "$XCODE_SCHEME"
       artifacts:
         - build/ios/ipa/*.ipa
         - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
